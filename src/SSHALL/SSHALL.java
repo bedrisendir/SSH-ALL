@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 class SSHALL{
 
     public static void main(String args[]) {
+	final long startTime = System.currentTimeMillis();  
 	BufferedReader br = null;
 	System.out.println("Filename : "+args[0]);
 	System.out.println("Number of Nodes : "+args[1]);
@@ -35,5 +36,27 @@ class SSHALL{
 	    t[c] = new Thread(worker);
 	    t[c].start();
 	}
+
+	for (int i = 0; i < t.length; i++) {
+
+	    try {
+
+		t[i].join();
+
+	    } catch (InterruptedException e) {
+
+		// TODO Auto-generated catch block
+
+		e.printStackTrace();
+
+	    }
+
+	}
+
+	final double duration = (System.currentTimeMillis() - startTime)/1000.0;
+        System.out.println();
+        System.out.println("Job Finished in " + duration + " seconds");
+        System.out.println();
+
     }
 }
