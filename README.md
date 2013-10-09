@@ -9,5 +9,8 @@ ant run
 
 command line args hardcoded in build.xml
 
-<arg value="nodelist"/> /***** NODELIST FILE ****/
-<arg value="8"/> //***** NUMBER OF NODES *****/
+/***** NODELIST FILE ****/
+value="nodelist"
+
+/***** NUMBER OF NODES *****/
+value="8"
