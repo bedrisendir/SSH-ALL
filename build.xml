@@ -1,0 +1,50 @@
+<project name="SSHALL" default="compile" basedir=".">
+
+  <property name="build.compiler" value="modern"/>
+  <property name="src" value="src"/>
+  <property name="BUILD" value="build"/>
+  <property name="classes" value="${BUILD}/classes"/>
+
+  <target name="compile" depends="SSHALL">  </target>
+
+
+  <target name="clean">
+    <delete dir="${BUILD}"/>
+  </target>
+
+  <!-- Prepare target directories -->
+  <target name="prepare">
+    <mkdir dir="${BUILD}"/>
+    <mkdir dir="${classes}"/>
+  </target>
+
+
+<target name="SSHALL" depends="prepare">
+    <javac srcdir="${src}"
+            includes="SSHALL/**"
+            excludes="**/package.html"
+            destdir="${classes}"
+            classpath="${classes}"
+            debug="on"
+            optimize="on"
+            deprecation="on"/>
+  </target>
+
+  <target name="jar">
+    <mkdir dir="${BUILD}/jar"/>
+    <jar destfile="${BUILD}/jar/SSHALL.jar" basedir="${BUILD}/classes">
+      <manifest>
+        <attribute name="Main-Class" value="SSHALL"/>
+      </manifest>
+    </jar>
+  </target>
+  
+  <target name="run" depends="jar">
+    <java jar="${BUILD}/jar/SSHALL.jar" fork="true">
+	<arg value="nodelist"/>
+	<arg value="8"/>  
+  </java>
+
+  </target>
+
+</project>
