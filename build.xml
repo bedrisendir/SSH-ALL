@@ -43,6 +43,9 @@
     <java jar="${BUILD}/jar/SSHALL.jar" fork="true">
 	<arg value="nodelist"/>
 	<arg value="8"/>  
+	<arg value="/var/work/bsendir1/apache-cassandra-1.1.6-src/scripts/"/>
+        <arg value="/import/linux/home/bsendir1/CASSANDRA-JSON-Data/"/>
+	<arg value="/var/work/bsendir1/lib/cassandra/data/LogData/User"/>
   </java>
 
   </target>
